@@ -65,6 +65,8 @@ class GithubCollaborativeFiltering(object):
         MSE = ratesAndPreds.map(lambda r: (r[1][0] - r[1][1])**2).mean()
         print("Mean Squared Error = " + str(MSE))
 
+        model.save(self.sc, "ALS_model")
+
     def run(self):
         self.read_data()
         self.join_dfs()
